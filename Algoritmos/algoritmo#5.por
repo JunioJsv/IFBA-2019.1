@@ -1,4 +1,4 @@
-programa {
+programa {
 	/*
 	 Voce recebeu um boleto e junto dele tinham instrucoes que indicavam 3 formas de pagamento:
 
@@ -11,7 +11,7 @@ programa {
 	 Faca um programa que leia o valor do boleto e apresente na tela cada uma das opcoes com seus respectivos valores.
 	*/
 	
-	funcao inicio() {
+	funcao inicio() {
 		real valorBoleto
 
 		//Ler o valor do boleto
@@ -25,7 +25,7 @@ programa {
 		escreva("    Parcelado em 3 vezes: ", "R$", (valorBoleto + (0.12 * valorBoleto)) / 3, "\n")
 		escreva("    Parcelado em 4 vezes: ", "R$", (valorBoleto + (0.12 * valorBoleto)) / 4, "\n")
 		escreva(" 3º Pagamento minimo:\n")
-		escreva("    Valor a ser pago(25% do valor total) ", "R$", 0.25 * valorBoleto, " Valor pendente com juros: ", "R$", (valorBoleto - (0.25 * valorBoleto)) + 0.15 * valorBoleto, "\n")
+		escreva("    Valor a ser pago(25% do valor total) ", "R$", 0.25 * valorBoleto, ", Valor pendente com juros: ", "R$", (0.75 * valorBoleto) + 0.15 * (0.75 * valorBoleto), "\n")
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -33,7 +33,7 @@ programa {
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1405; 
+ * @POSICAO-CURSOR = 1038; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
