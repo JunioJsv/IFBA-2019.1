@@ -8,7 +8,7 @@ programa
 	inteiro dia = 0, mes = 0, ano = 0
 	
 	funcao inicio() {
-		entrada_nome()
+		se(entrada_nome()) se(entrada_data()) escreva("SENHA?")
 	}
 
 	funcao logico entrada_nome() {
@@ -21,6 +21,34 @@ programa
 		para(inteiro posicao = 0; posicao < Texto.numero_caracteres(nome); posicao++) {
 			se(Texto.obter_caracter(nome, posicao) == ' ') nome_valido = verdadeiro
 		}
+
+		// Verificar se tem apenas letras e espaços
+		se(nome_valido) {
+			inteiro erro = 0
+			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(nome); posicao++) {
+				se(Texto.obter_caracter(Texto.caixa_alta(nome), posicao) == Texto.obter_caracter(Texto.caixa_baixa(nome), posicao) e Texto.obter_caracter(nome, posicao) != ' ') erro++
+			}
+			se(erro == 0) nome_valido = verdadeiro
+			senao nome_valido = falso
+		}
+
+		//Verificar se o nome começa ou termina com espaços
+		se(nome_valido) {
+			se(Texto.obter_caracter(nome, 0) != ' ' e Texto.obter_caracter(nome, Texto.numero_caracteres(nome) - 1) != ' ') nome_valido = verdadeiro
+			senao nome_valido = falso
+		}
+
+		// Verificar se os nomes estão separados por apenas um espaço
+		se(nome_valido) {
+			inteiro erro = 0
+			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(nome); posicao++) {
+				se(Texto.obter_caracter(nome, posicao) == ' ' e Texto.obter_caracter(nome, posicao + 1) == ' ') erro++
+			}
+			se(erro == 0) nome_valido = verdadeiro
+			senao nome_valido = falso
+		}
+
+		//Verificar se o nome tem no minimo 3 letras
 
 		se(nome_valido) escreva("> [entrada_nome]: Nome valido.\n")
 		senao escreva("> [entrada_nome]: Nome invalido.\n")
@@ -72,9 +100,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 185; 
+ * @POSICAO-CURSOR = 1653; 
+ * @DOBRAMENTO-CODIGO = [58];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {dia, 8, 9, 3}-{mes, 8, 18, 3}-{ano, 8, 27, 3};
+ * @SIMBOLOS-INSPECIONADOS = {erro, 27, 11, 4}-{erro, 43, 11, 4};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
