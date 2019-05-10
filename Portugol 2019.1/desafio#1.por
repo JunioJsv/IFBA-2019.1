@@ -8,7 +8,8 @@ programa
 	inteiro dia = 0, mes = 0, ano = 0
 	
 	funcao inicio() {
-		se(entrada_nome()) se(entrada_data()) escreva("SENHA?")
+		//se(entrada_nome()) se(entrada_data()) entrada_senha()
+		entrada_senha()
 	}
 
 	funcao logico entrada_nome() {
@@ -22,7 +23,7 @@ programa
 			se(Texto.obter_caracter(nome, posicao) == ' ') nome_valido = verdadeiro
 		}
 
-		// Verificar se tem apenas letras e espaços
+		// Verificar se tem apenas letras e espaÃ§os
 		se(nome_valido) {
 			inteiro erro = 0
 			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(nome); posicao++) {
@@ -32,13 +33,13 @@ programa
 			senao nome_valido = falso
 		}
 
-		//Verificar se o nome começa ou termina com espaços
+		//Verificar se o nome comeÃ§a ou termina com espaÃ§os
 		se(nome_valido) {
 			se(Texto.obter_caracter(nome, 0) != ' ' e Texto.obter_caracter(nome, Texto.numero_caracteres(nome) - 1) != ' ') nome_valido = verdadeiro
 			senao nome_valido = falso
 		}
 
-		// Verificar se os nomes estão separados por apenas um espaço
+		// Verificar se os nomes estÃ£o separados por apenas um espaÃ§o
 		se(nome_valido) {
 			inteiro erro = 0
 			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(nome); posicao++) {
@@ -48,7 +49,23 @@ programa
 			senao nome_valido = falso
 		}
 
-		//Verificar se o nome tem no minimo 3 letras
+		//Verificar se o nome tem no minimo 2 letras
+		se(nome_valido) {
+			inteiro erro = 0
+			cadeia cadeia_alvo = ""
+			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(nome); posicao++) {
+				se(Texto.obter_caracter(nome, posicao) != ' ') {
+					cadeia_alvo += Texto.obter_caracter(nome, posicao)
+				}
+				se(Texto.obter_caracter(nome, posicao) == ' ' ou posicao == Texto.numero_caracteres(nome) -1) {
+					se(Texto.numero_caracteres(cadeia_alvo) < 2) erro++
+					cadeia_alvo = ""
+				}
+			}
+
+			se(erro == 0) nome_valido = verdadeiro
+			senao nome_valido = falso
+		}
 
 		se(nome_valido) escreva("> [entrada_nome]: Nome valido.\n")
 		senao escreva("> [entrada_nome]: Nome invalido.\n")
@@ -63,6 +80,7 @@ programa
 		escreva ("> [entrada_data]: Digite sua data de nascimento no formato dd/mm/aaaa: ")
 		leia(data)
 
+		// verificar se esta no formato dd/mm/aaaa
 		se(Texto.numero_caracteres(data) == 10 e Tipos.cadeia_e_inteiro(Texto.extrair_subtexto(data, 0, 2), 10) e Tipos.cadeia_e_inteiro(Texto.extrair_subtexto(data, 3, 5), 10) e Tipos.cadeia_e_inteiro(Texto.extrair_subtexto(data, 6, 10), 10)) {
 			dia = Tipos.cadeia_para_inteiro(Texto.extrair_subtexto(data, 0, 2), 10)
 			mes = Tipos.cadeia_para_inteiro(Texto.extrair_subtexto(data, 3, 5), 10)
@@ -94,16 +112,41 @@ programa
 		retorne data_valida
 	}
 
+	funcao logico entrada_senha() {
+		logico senha_valida = falso
+		escreva("> [entrada_senha]: Digite uma senha: ")
+		leia(senha)
+
+		// verficar se tem no minimo 8 digitos
+		se(Texto.numero_caracteres(senha) >= 8) senha_valida = verdadeiro
+
+		// verificar se asenha tem espaços ou acentos
+		//Falta verificar os acentos
+		se(senha_valida) {
+			inteiro erro = 0
+			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(senha); posicao++) {
+				se(Texto.obter_caracter(senha, posicao) == ' ') erro++
+			}
+			se(erro == 0) senha_valida = verdadeiro
+			senao senha_valida = falso
+		}
+
+		se(senha_valida) escreva("> [entrada_senha]: Senha valida.\n")
+		senao escreva("> [entrada_senha]: Senha invalida.\n")
+		
+		retorne senha_valida
+	}
+
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1653; 
- * @DOBRAMENTO-CODIGO = [58];
+ * @POSICAO-CURSOR = 4343; 
+ * @DOBRAMENTO-CODIGO = [14, 75];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {erro, 27, 11, 4}-{erro, 43, 11, 4};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
