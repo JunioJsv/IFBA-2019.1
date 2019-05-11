@@ -1,3 +1,7 @@
+/*
+ * Jeovane Santos Viana - Algoritmo 1º semestre
+ */
+
 programa
 {
 	inclua biblioteca Calendario
@@ -8,8 +12,8 @@ programa
 	inteiro dia = 0, mes = 0, ano = 0
 	
 	funcao inicio() {
-		//se(entrada_nome()) se(entrada_data()) entrada_senha()
-		entrada_senha()
+		se(entrada_nome()) se(entrada_data()) entrada_senha()
+		//entrada_senha()
 	}
 
 	funcao logico entrada_nome() {
@@ -120,15 +124,36 @@ programa
 		// verficar se tem no minimo 8 digitos
 		se(Texto.numero_caracteres(senha) >= 8) senha_valida = verdadeiro
 
-		// verificar se asenha tem espaços ou acentos
-		//Falta verificar os acentos
+		// verificar se a senha tem espaços ou acentos
 		se(senha_valida) {
+			cadeia acentos = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ "
 			inteiro erro = 0
 			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(senha); posicao++) {
-				se(Texto.obter_caracter(senha, posicao) == ' ') erro++
+				para(inteiro posicaoAcento = 0; posicaoAcento < Texto.numero_caracteres(acentos); posicaoAcento++) {
+					se(Texto.obter_caracter(senha, posicao) == Texto.obter_caracter(acentos, posicaoAcento)) erro++
+				}
 			}
 			se(erro == 0) senha_valida = verdadeiro
 			senao senha_valida = falso
+		}
+
+		// verificar se não contem o mesmo caractere em sequência
+		se(senha_valida) {
+			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(senha); posicao++) {
+				se(posicao < Texto.numero_caracteres(senha) - 1 e Texto.obter_caracter(senha, posicao) == Texto.obter_caracter(senha, posicao + 1)) senha_valida = falso
+			}
+		}
+
+		// Verificar se tem alguma parte da data dentro da senha
+		// Ta dando erro!!!
+		se(senha_valida) {
+			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(senha); posicao++) {
+				se(posicao < Texto.numero_caracteres(senha) - 1 e (Texto.extrair_subtexto(senha, posicao, posicao + 3) == Tipos.inteiro_para_cadeia(dia, 10) ou Texto.extrair_subtexto(senha, posicao, posicao + 3) == Tipos.inteiro_para_cadeia(mes, 10))) senha_valida = falso
+			}
+
+			para(inteiro posicao = 0; posicao < Texto.numero_caracteres(senha); posicao++) {
+				se(posicao < Texto.numero_caracteres(senha) - 1 e Texto.extrair_subtexto(senha, posicao, posicao + 5) == Tipos.inteiro_para_cadeia(ano, 10)) senha_valida = falso
+			}
 		}
 
 		se(senha_valida) escreva("> [entrada_senha]: Senha valida.\n")
@@ -143,8 +168,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4343; 
- * @DOBRAMENTO-CODIGO = [14, 75];
+ * @POSICAO-CURSOR = 5288; 
+ * @DOBRAMENTO-CODIGO = [18, 79];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
