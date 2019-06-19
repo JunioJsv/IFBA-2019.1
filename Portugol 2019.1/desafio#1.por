@@ -184,9 +184,11 @@ programa
 		se(erros[2] != 0) escreva("> [ALERTA!]: A senha não deve conter o mesmo caracter em sequência!\n")
 		// <--
 
-		// Verificar se tem alguma parte da data dentro da senha -->
-		se(Texto.posicao_texto(Tipos.inteiro_para_cadeia(dia, 10), senha, 0) != -1 ou Texto.posicao_texto(Tipos.inteiro_para_cadeia(mes, 10), senha, 0) != -1 ou Texto.posicao_texto(Tipos.inteiro_para_cadeia(ano, 10), senha, 0) != -1) erros[3]++
-		se(erros[3] != 0) escreva("> [ALERTA!]: A senha não pode contar a data, mês ou ano, de nascimento, informado anteriormente!\n")
+		//[!O BUG TAVA AQUI] Verificar se tem alguma parte da data dentro da senha -->
+		se(dia != 0 e mes != 0 e ano != 0) {
+			se(Texto.posicao_texto(Tipos.inteiro_para_cadeia(dia, 10), senha, 0) != -1 ou Texto.posicao_texto(Tipos.inteiro_para_cadeia(mes, 10), senha, 0) != -1 ou Texto.posicao_texto(Tipos.inteiro_para_cadeia(ano, 10), senha, 0) != -1) erros[3]++
+			se(erros[3] != 0) escreva("> [ALERTA!]: A senha não pode contar a data, mês ou ano, de nascimento, informado anteriormente!\n")
+		} senao escreva("> [ALERTA!]: Não é possivel verificar se sua senha contem partes da data, por conta do formato invalido!\n")
 		// <--
 
 		// Verificar se a senha tem espaços -->
@@ -249,10 +251,10 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 434; 
+ * @POSICAO-CURSOR = 7528; 
  * @DOBRAMENTO-CODIGO = [28, 92];
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {senhaCategorias, 15, 36, 15}-{erros, 161, 10, 5};
+ * @SIMBOLOS-INSPECIONADOS = {dia, 15, 9, 3}-{mes, 15, 18, 3}-{ano, 15, 27, 3}-{senhaCategorias, 15, 36, 15};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
