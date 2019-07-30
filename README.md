@@ -1,1 +1,18 @@
-# IFBA-2019.1
+# IFBA CAMPUS PORTO SEGURO - BA
+> Criei esse repositório visando guardar e compartilhar meus simples algoritmos feitos durante minha graduação.
+### ALGORITMOS 2019.1
+``Linguagem utilizada Portugol``
+ 
+| UNIDADE | NOTA OBTIDA |
+|:-------:|:-----------:|
+|    I    |     9,3     |
+|    II   |     10,0    |
+|   III   |     8,7     |
+### LINGUAGEM DE PROGRAMAÇÃO 2019.2
+``Linguagem utilizada C``
+
+| UNIDADE | NOTA OBTIDA |
+|:-------:|:-----------:|
+|    I    |      0,0    |
+|    II   |      0,0    |
+|   III   |      0,0    |
