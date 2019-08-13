@@ -23,62 +23,57 @@ situações. Por fim, na opção 5 deve sair. A situação é detalhada na tabela a seg
 */
 
 int main() {
-	//Salvar com a codificação Windows 1252
+	//Salvar com a codificaÃ§Ã£o Windows 1252
 	setlocale(LC_ALL, "Portuguese");
 
 	int opcao = -1;
 	int count = 0;
-	char nomes[1024][32];
+	char nomes[1024][128];
 	float medias[1024];
 
 	char nome[1024];
 	int index = -1;
 	char situacao[16];
 
-	char menu[] = {"\n1. Lançar média\n2. Mostrar a média por nome\n3. Informações estudantes acima da média\n4. Mostrar nome, média e situação\n5. Sair\nOpção: "};
+	char menu[] = {"\n1. LanÃ§ar mÃ©dia\n2. Mostrar a mÃ©dia por nome\n3. InformaÃ§Ãµes de estudantes acima da mÃ©dia\n4. Mostrar nome, mÃ©dia e situaÃ§Ã£o\n5. Sair\nOpÃ§Ã£o: "};
 
 	while(opcao != 5) {
 
 		printf(menu);
 		scanf("%i", &opcao);
+		getchar();
 
 		switch(opcao) {
 			case 1:
-				fflush(stdin);
 				printf("Nome: ");
-				scanf("%32[^\n]", nomes[count]);
-				printf("Media: ");
+				scanf("%128[^\n]", nomes[count]);
+				printf("MÃ©dia: ");
 				scanf("%f", &medias[count]);
 				count++;
 				break;
-
 			case 2:
-				fflush(stdin);
 				printf("Nome: ");
-				scanf("%32[^\n]", nome);
+				scanf("%128[^\n]", nome);
 				for(int i = 0; i < count; ++i) {
 					if (strcmp(nome, nomes[i]) == 0) {
 						index = i;
 					}
 				}
 				if(index != -1) {
-					printf("A media de %s é %f.\n", nome, medias[index]);
+					printf("A media de %s Ã© %f.\n", nome, medias[index]);
 				}
 				else {
-					puts("Aluno não encontrado.");
+					puts("Aluno nÃ£o encontrado.");
 				}
 				index = -1;
 				break;
-
 			case 3:
-				for(int i = 0; i < count; ++i)
-				{
+				for(int i = 0; i < count; ++i) {
 					if(medias[i] > 7.0) {
 						printf("%s esta acima da media com %f pontos.\n", nomes[i], medias[i]);
 					}
 				}
 				break;
-
 			case 4:
 				for (int i = 0; i < count; ++i) {
 					if (medias[i] >= 7) {
@@ -91,15 +86,13 @@ int main() {
 						strcpy(situacao, "Prova final\0");
 					}
 
-					printf("Nome: %s, Media: %f, Situação: %s\n", nomes[i], medias[i], situacao);
+					printf("Nome: %s, Media: %f, SituaÃ§Ã£o: %s\n", nomes[i], medias[i], situacao);
 				}
 				break;
-
 			default:
-				if(opcao != 5) puts("Opção invalida!");
+				if(opcao != 5) puts("OpÃ§Ã£oo invalida!");
 				break;
 		}
 	}
-
 	return 0;
 }
