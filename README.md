@@ -5,9 +5,9 @@
  
 | UNIDADE | NOTA OBTIDA |
 |:-------:|:-----------:|
-|    I    |     9,3     |
+|    I    |     8,7     |
 |    II   |     10,0    |
-|   III   |     8,7     |
+|   III   |     9,3     |
 ### LINGUAGEM DE PROGRAMAÇÃO 2019.2
 > LINGUAGEM UTILIZADA C
 
