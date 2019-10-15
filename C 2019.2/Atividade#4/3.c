@@ -15,41 +15,42 @@ int main() {
 	while(opcao != 5 &&
 	(vip > 0 || super_vip > 0 || ultra_vip > 0)) {
 		int quantidade = 0;
-		puts("""
-			------------------------------
-			1. Ingresso vip
-			2. Ingresso super vip
-			3. Ingresso ultra vip
-			4. Exibir relatorio de vendas
-			5. Sair
-			------------------------------
+		printf(
+			"""
+			+-----------------------------+
+			1. Ingresso vip.              |
+			2. Ingresso super vip.        |
+			3. Ingresso ultra vip.        |
+			4. Exibir relatorio de vendas.|
+			5. Sair.                      |
+			+-----------------------------+
 			""");
-		printf("Opcao: ");
+		printf("> Opcao: ");
 		scanf(" %d", &opcao);
 		switch(opcao) {
 			case 1:
-				puts("Quantos ingressos voce dejesa?");
+				printf("\n! Quantos ingressos voce dejesa? ");
 				scanf(" %d", &quantidade);
 				if(quantidade <= vip) {
 					vip -= quantidade;
 					puts("[!] Compra realizada com sucesso!");
-				} else puts("[!] Ingressos insuficientes");
+				} else puts("[!] Ingressos insuficientes.");
 				break;
 			case 2:
-				puts("Quantos ingressos voce dejesa?");
+				printf("\n! Quantos ingressos voce dejesa? ");
 				scanf(" %d", &quantidade);
 				if(quantidade <= super_vip) {
 					super_vip -= quantidade;
 					puts("[!] Compra realizada com sucesso!");
-				} else puts("[!] Ingressos insuficientes");
+				} else puts("[!] Ingressos insuficientes.");
 				break;
 			case 3:
-				puts("Quantos ingressos voce dejesa?");
+				printf("\n! Quantos ingressos voce dejesa? ");
 				scanf(" %d", &quantidade);
 				if(quantidade <= ultra_vip) {
 					ultra_vip -= quantidade;
 					puts("[!] Compra realizada com sucesso!");
-				} else puts("[!] Ingressos insuficientes");
+				} else puts("[!] Ingressos insuficientes.");
 				break;
 			case 4:
 				relatorio();
@@ -57,7 +58,7 @@ int main() {
 			case 5:
 				break;
 			default:
-				puts("[!] Opcao invalida");
+				puts("[!] Opcao invalida.");
 		}
 	}
 	relatorio();
@@ -67,11 +68,11 @@ int main() {
 void relatorio() {
 	printf(
 		"""
-		Valor total arrecadado R$%.2f
-		Ingressos vips vendidos: %d, disponiveis %d
-		Ingressos super vips vendidos: %d, disponiveis %d
-		Ingressos ultra vips vendidos: %d, disponiveis %d
-		Ocupacao do teatro: %d%%\n
+		! Valor total arrecadado R$%.2f.
+		! Ingressos vips vendidos %d, disponiveis %d.
+		! Ingressos super vips vendidos %d, disponiveis %d.
+		! Ingressos ultra vips vendidos: %d, disponiveis %d.
+		! Ocupacao do teatro %d%%.
 		""",
 		(150 - vip) * 1500.00f +
 		(250 - super_vip) * 2500.00f +
