@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-#include <locale.h>
 
 // Jeovane Santos Viana
 /*
-* 5º) Escreva uma função que recebe um inteiro e imprima esse valor em algarismos romanos. Por exemplo, se essa
-* função receber 18 deve imprimir XVIII
+* 5Âº) Escreva uma funÃ§Ã£o que recebe um inteiro e imprima esse valor em algarismos romanos. Por exemplo, se essa
+* funÃ§Ã£o receber 18 deve imprimir XVIII
 */
 
 void toromano(int num, char * buff, int size);
@@ -13,7 +12,6 @@ void toromano(int num, char * buff, int size);
 int main() {
     int inteiro = 0;
     char buffer[128];
-    setlocale(LC_ALL, "Portuguese");
 
     puts("Digite um inteiro:");
     scanf(" %d", &inteiro);

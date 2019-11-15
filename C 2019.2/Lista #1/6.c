@@ -5,15 +5,15 @@
 
 // Jeovane Santos Viana
 /*
-* 6º) Um dos sistemas de encriptação mais antigos é atribuído a Júlio César: se uma letra a ser encriptada é a letra de
-* número N do alfabeto, substitua-a com a letra (N + K), onde K é um número inteiro constante (César utilizava K = 3).
-* Usualmente consideramos o espaço como deslocamento zero e todos os cálculos são realizados com módulo-27.
+* 6Âº) Um dos sistemas de encriptaÃ§Ã£o mais antigos Ã© atribuÃ­do a JÃºlio CÃ©sar: se uma letra a ser encriptada Ã© a letra de
+* nÃºmero N do alfabeto, substitua-a com a letra (N + K), onde K Ã© um nÃºmero inteiro constante (CÃ©sar utilizava K = 3).
+* Usualmente consideramos o espaÃ§o como deslocamento zero e todos os cÃ¡lculos sÃ£o realizados com mÃ³dulo-27.
 * Dessa forma, para K = 1 a mensagem Ataque ao amanhecer se torna bubrfabpabnboifdfs.
-*   a) Faça uma função que receba como parâmetros uma mensagem e um valor de K e retorne a mensagem
-*   criptografada pelo código de César. Fraquezas do algoritmo: apenas 26 chaves possíveis.
+*   a) FaÃ§a uma funÃ§Ã£o que receba como parÃ¢metros uma mensagem e um valor de K e retorne a mensagem
+*   criptografada pelo cÃ³digo de CÃ©sar. Fraquezas do algoritmo: apenas 26 chaves possÃ­veis.
 *
-*   b) Faça uma função que receba como parâmetros uma mensagem e um valor de K e retorne a mensagem
-*   descriptografada pelo código de César. Fraquezas do algoritmo: apenas 26 chaves possíveis. 
+*   b) FaÃ§a uma funÃ§Ã£o que receba como parÃ¢metros uma mensagem e um valor de K e retorne a mensagem
+*   descriptografada pelo cÃ³digo de CÃ©sar. Fraquezas do algoritmo: apenas 26 chaves possÃ­veis. 
 */
 
 char * cript(char * msg, int key, int size);
@@ -65,12 +65,14 @@ char * uncript(char * cmsg, int key, int size) {
     char * umsg = (char *) malloc(sizeof(char) * size);
     int ukey = abs(key);
 
-    for(int index = 0; index < size && cmsg[index] != '\0'; index++)
+    for(int index = 0; index < size && cmsg[index] != '\0'; index++) {
+        cmsg[index] = (char) tolower(cmsg[index]);
+
         umsg[index] = (char) cmsg[index] != 'a' ?
                         ((int) cmsg[index] - ukey) >= 'a' ?
                             ((int) cmsg[index] - ukey) :
                         ((int) cmsg[index] - ukey) + 25 :
                       ' ';
-
+    }
     return umsg;
 }
