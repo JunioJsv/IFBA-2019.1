@@ -29,13 +29,13 @@ int main() {
 
 char * minimax(int * matriz, int rows, int cols) {
     int maxrow = 0;
-    int buff = 0;
+    int buff = (int) NULL;
     int flag = 0;
     char * pos = malloc(sizeof(char) * 128);
     // Achar a linha que tem o maior valor
     for(int y = 0; y < rows; y++) {
         for(int x = 0; x < cols; x++) {
-            if(matriz[x + y * cols] > buff) {
+            if(matriz[x + y * cols] > buff || buff == NULL) {
                 buff = matriz[x + y * cols];
                 maxrow = y;
             }
