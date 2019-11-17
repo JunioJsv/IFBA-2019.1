@@ -21,7 +21,7 @@ int main() {
 
     for(int y = 0; y < 12; y++) {
         for(int x = 0; x < 12; x++) {
-            matriz[y][x] = rand() % 90 + 10;
+            matriz[y][x] = rand() % 41 + 10;
         }
     }
     puts("Primaria:");
@@ -40,9 +40,9 @@ int getproduct(int * matriz, int rows, int cols) {
     for(int y = 0; y < rows; y++) {
         for(int x = 0; x < cols; x++) {
             if(x > y)
-                pri += matriz[x * y + y];
+                pri += matriz[x + y * cols];
             if(x < cols - 1 - y)
-                sec += matriz[x * y + y];
+                sec += matriz[x + y * cols];
         }
     }
 
@@ -56,7 +56,7 @@ void showpri(int * matriz, int rows, int cols) {
                         "<%d> " :
                    x > y ?
                         "[%d] " :
-                   " %d  ", (int) matriz[x * y + y]);
+                   " %d  ", (int) matriz[x + y * cols]);
         }
         puts("");
     }
@@ -69,7 +69,7 @@ void showsec(int * matriz, int rows, int cols) {
                         "<%d> " :
                    x < cols - 1 - y ?
                         "[%d] " :
-                   " %d  ", (int) matriz[x * y + y]);
+                   " %d  ", (int) matriz[x + y * cols]);
         }
         puts("");
     }

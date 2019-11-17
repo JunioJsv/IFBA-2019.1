@@ -35,8 +35,8 @@ char * minimax(int * matriz, int rows, int cols) {
     // Achar a linha que tem o maior valor
     for(int y = 0; y < rows; y++) {
         for(int x = 0; x < cols; x++) {
-            if(matriz[x * y + y] > buff) {
-                buff = matriz[x * y + y];
+            if(matriz[x + y * cols] > buff) {
+                buff = matriz[x + y * cols];
                 maxrow = y;
             }
         }
@@ -44,8 +44,8 @@ char * minimax(int * matriz, int rows, int cols) {
     // Achar o menor valor na linha que tem o maior valor
     buff = (int) NULL;
     for(int x = 0; x < cols; x++) {
-        if(matriz[x * maxrow + maxrow] < buff || buff == NULL) {
-            buff = matriz[x * maxrow + maxrow];
+        if(matriz[x + maxrow * cols] < buff || buff == NULL) {
+            buff = matriz[x + maxrow * cols];
             sprintf(pos, "[%d,%d]", maxrow, x);
         }
     }
@@ -54,9 +54,9 @@ char * minimax(int * matriz, int rows, int cols) {
         printf(y == maxrow ? "> " : "  ");
         for(int x = 0; x < cols; x++)
             printf(
-                y == maxrow && matriz[x * y + y] == buff && !flag ?
+                y == maxrow && matriz[x + y * cols] == buff && !flag ?
                     "[%d]" + flag++ :
-                " %d ", matriz[x * y + y]);
+                " %d ", matriz[x + y * cols]);
         puts("");
     }
     return pos;

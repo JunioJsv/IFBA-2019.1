@@ -31,13 +31,13 @@ int main() {
 }
 
 float getmediapri(int * matriz, int rows, int cols) {
-    int total = 0;
+    float total = 0;
     int count = 0;
 
     for(int y = 0; y < rows; y++) {
         for(int x = 0; x < cols; x++) {
             if(x < y) {
-                total += (float) matriz[x * y + y];
+                total += (float) matriz[x + y * cols];
                 count++;
             }
         }
@@ -52,8 +52,8 @@ void showpri(int * matriz, int rows, int cols) {
             printf(x == y ?
                         "<%d> " :
                    x < y ?
-                        "%d " :
-                   "%d ", (int) matriz[x * y + y]);
+                        "[%d] " :
+                   " %d  ", (int) matriz[x + y * cols]);
         }
         puts("");
     }

@@ -33,8 +33,8 @@ void showsec(int * matriz, int rows, int cols) {
             printf(x == cols - 1 - y ?
                         "<%d> " :
                    x > cols - 1 - y ?
-                        "%d " :
-                   "%d ", (int) matriz[x * y + y]);
+                        "[%d] " :
+                   " %d  ", (int) matriz[x + y * cols]);
         }
         puts("");
     }
@@ -46,8 +46,8 @@ void showpri(int * matriz, int rows, int cols) {
             printf(x == y ?
                         "<%d> " :
                    x < y ?
-                        "%d " :
-                   "%d ", (int) matriz[x * y + y]);
+                        "[%d] " :
+                   " %d  ", (int) matriz[x + y * cols]);
         }
         puts("");
     }
@@ -57,7 +57,7 @@ int getlowersec(int * matriz, int rows, int cols) {
     int lower = (int) NULL;
     for(int y = 0; y < rows; y++) {
         for(int x = 0; x < cols; x++) {
-            int num = (int) matriz[x * y + y];
+            int num = (int) matriz[x + y * cols];
             if((lower == NULL || num < lower) && x > cols - 1 - y)
                 lower = num;
         }
