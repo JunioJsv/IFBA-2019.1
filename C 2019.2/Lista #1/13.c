@@ -10,7 +10,7 @@
 * da diagonal principal e da diagonal secundári
 */
 
-int getproduct(int * matriz, int rows, int cols);
+long int getproduct(int * matriz, int rows, int cols);
 void showsec(int * matriz, int rows, int cols);
 void showpri(int * matriz, int rows, int cols);
 
@@ -28,25 +28,25 @@ int main() {
     showpri((int *) matriz, 12, 12);
     puts("Secundaria:");
     showsec((int *) matriz, 12, 12);
-    printf("[!] O produto dos elementos acima da diagonal principal e da diagonal secundaria e %d",
+    printf("[!] O produto dos elementos acima da diagonal principal e da diagonal secundaria e %ld",
             getproduct((int *) matriz, 12, 12));
     return 0;
 }
 
-int getproduct(int * matriz, int rows, int cols) {
-    int pri = 0;
-    int sec = 0;
+long int getproduct(int * matriz, int rows, int cols) {
+    long int pri = 0;
+    long int sec = 0;
 
     for(int y = 0; y < rows; y++) {
         for(int x = 0; x < cols; x++) {
             if(x > y)
-                pri += matriz[x + y * cols];
+                pri += (long int) matriz[x + y * cols];
             if(x < cols - 1 - y)
-                sec += matriz[x + y * cols];
+                sec += (long int) matriz[x + y * cols];
         }
     }
 
-    return pri * sec;
+    return (long int) pri * sec;
 }
 
 void showpri(int * matriz, int rows, int cols) {
