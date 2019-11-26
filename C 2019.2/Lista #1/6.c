@@ -55,8 +55,8 @@ char * cript(char * msg, int key, int size) {
         cmsg[index] = (char) msg[index] != ' ' ?
                         ((int) msg[index] + ckey) <= 'z' ?
                             ((int) msg[index] + ckey) :
-                        abs(msg[index] + ckey) - 25 :
-                      'a';
+                        abs(msg[index] + ckey) - 26 :
+                      '0';
     }
     return cmsg;
 }
@@ -68,10 +68,10 @@ char * uncript(char * cmsg, int key, int size) {
     for(int index = 0; index < size && cmsg[index] != '\0'; index++) {
         cmsg[index] = (char) tolower(cmsg[index]);
 
-        umsg[index] = (char) cmsg[index] != 'a' ?
+        umsg[index] = (char) cmsg[index] != '0' ?
                         ((int) cmsg[index] - ukey) >= 'a' ?
                             ((int) cmsg[index] - ukey) :
-                        ((int) cmsg[index] - ukey) + 25 :
+                        ((int) cmsg[index] - ukey) + 26 :
                       ' ';
     }
     return umsg;
