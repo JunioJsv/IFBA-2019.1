@@ -8,7 +8,7 @@
 |    I    |     8,7     |
 |    II   |     10,0    |
 |   III   |     9,3     |
-|  MEDIA  |     9,3     |
+|  MÉDIA  |     9,3     |
 
 ### LINGUAGEM DE PROGRAMAÇÃO 2019.2
 > LINGUAGEM UTILIZADA C
@@ -18,4 +18,4 @@
 |    I    |      10,0   |
 |    II   |      8,2    |
 |   III   |      10,0   |
-|  MEDIA  |      9,4    |
+|  MÉDIA  |      9,4    |
